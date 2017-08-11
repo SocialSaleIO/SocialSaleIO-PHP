@@ -1,0 +1,35 @@
+{
+    "name": "SocialSaleIO/SocialSaleIO-PHP",
+    "description": "PHP integration with socialsale.io",
+    "keywords": ["socialsale.io"],
+    "homepage": "http://socialsale.io",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Gorgan",
+            "email": "danut007ro@gmail.com",
+            "homepage": "https://twitter.com/IvanAkimov"
+        }
+    ],
+    "require": {
+        "php": "^5.6 || ^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "SocialSaleIO\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SocialSaleIO\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
