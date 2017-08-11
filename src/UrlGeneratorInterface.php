@@ -19,7 +19,7 @@ namespace SocialSaleIO;
 interface UrlGeneratorInterface
 {
     /**
-     * Generate url for click
+     * Generate url for click.
      *
      * @param string $socialPlatform
      * @param string $id
@@ -27,5 +27,5 @@ interface UrlGeneratorInterface
      *
      * @return string
      */
-    public function generateClickUrl($socialPlatform, $id, array $options = array());
+    public function generateClickUrl($socialPlatform, $id, array $options = []);
 }

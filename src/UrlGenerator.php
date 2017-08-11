@@ -42,13 +42,13 @@ class UrlGenerator implements UrlGeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generateClickUrl($socialPlatform, $id, array $options = array())
+    public function generateClickUrl($socialPlatform, $id, array $options = [])
     {
         $options['_id'] = (string) $id;
 
         $encodedPayload = $this->payloadProcessor->encode($options);
 
-        return rtrim($this->host, '/') . "/{$this->appId}/$socialPlatform/$encodedPayload";
+        return rtrim($this->host, '/')."/{$this->appId}/$socialPlatform/$encodedPayload";
     }
 
     /**

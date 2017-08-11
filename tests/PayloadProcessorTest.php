@@ -26,7 +26,7 @@ class PayloadProcessorTest extends TestCase
         $payloadProcessor = new PayloadProcessor('key');
         $this->assertEquals(
             '4JMp5eStEVJZyCXShH4XMWXRFmnABSId0FPVmYHauI8=.eyJrZXkiOiJ2YWx1ZSJ9',
-            $payloadProcessor->encode(array('key' => 'value'))
+            $payloadProcessor->encode(['key' => 'value'])
         );
     }
 
@@ -61,7 +61,7 @@ class PayloadProcessorTest extends TestCase
     {
         $payloadProcessor = new PayloadProcessor('key');
         $this->assertEquals(
-            array('key' => 'value'),
+            ['key' => 'value'],
             $payloadProcessor->decode('4JMp5eStEVJZyCXShH4XMWXRFmnABSId0FPVmYHauI8=.eyJrZXkiOiJ2YWx1ZSJ9')
         );
     }

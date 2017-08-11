@@ -23,7 +23,7 @@ use SocialSaleIO\Exception\InvalidSignatureException;
 interface PayloadProcessorInterface
 {
     /**
-     * Sign and encode a payload
+     * Sign and encode a payload.
      *
      * @param array $payload
      *
@@ -32,7 +32,7 @@ interface PayloadProcessorInterface
     public function encode(array $payload);
 
     /**
-     * Decode and verify signature of a payload
+     * Decode and verify signature of a payload.
      *
      * @param string $encodedPayload
      *

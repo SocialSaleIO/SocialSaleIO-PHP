@@ -37,21 +37,19 @@ class UrlGeneratorTest extends TestCase
     {
         $payloadProcessor = $this->getMockBuilder('SocialSaleIO\PayloadProcessor')
             ->disableOriginalConstructor()
-            ->getMock()
-        ;
+            ->getMock();
 
         $payloadProcessor
             ->expects($this->once())
             ->method('encode')
-            ->with(array('_id' => 'id'))
-            ->willReturn('encodedPayload')
-        ;
+            ->with(['_id' => 'id'])
+            ->willReturn('encodedPayload');
 
         $urlGenerator = new UrlGenerator('appId', $payloadProcessor);
         $urlGenerator->setHost('http://localhost/');
         $this->assertEquals(
             'http://localhost/appId/socialPlatform/encodedPayload',
-            $urlGenerator->generateClickUrl('socialPlatform', 'id', array())
+            $urlGenerator->generateClickUrl('socialPlatform', 'id', [])
         );
     }
 }

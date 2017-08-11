@@ -18,5 +18,4 @@ namespace SocialSaleIO\Exception;
  */
 class InvalidSignatureException extends PayloadException
 {
-
 }

@@ -43,7 +43,7 @@ class PayloadProcessor implements PayloadProcessorInterface
         $p2 = base64_encode(json_encode($payload));
         $p1 = base64_encode(hash_hmac('sha256', $p2, $this->key, true));
 
-        return $p1 . '.' . $p2;
+        return $p1.'.'.$p2;
     }
 
     /**
