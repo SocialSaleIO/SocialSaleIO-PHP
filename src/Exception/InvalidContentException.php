@@ -18,5 +18,4 @@ namespace SocialSaleIO\Exception;
  */
 class InvalidContentException extends \InvalidArgumentException
 {
-
 }
