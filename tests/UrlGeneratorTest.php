@@ -42,13 +42,16 @@ class UrlGeneratorTest extends TestCase
         $payloadProcessor
             ->expects($this->once())
             ->method('encode')
-            ->with(['_id' => 'id'])
+            ->with([
+                '_id' => 'id',
+                '_platform' => 'socialPlatform',
+            ])
             ->willReturn('encodedPayload');
 
         $urlGenerator = new UrlGenerator('appId', $payloadProcessor);
         $urlGenerator->setHost('http://localhost/');
         $this->assertEquals(
-            'http://localhost/appId/socialPlatform/encodedPayload',
+            'http://localhost/appId/encodedPayload',
             $urlGenerator->generateClickUrl('socialPlatform', 'id', [])
         );
     }
