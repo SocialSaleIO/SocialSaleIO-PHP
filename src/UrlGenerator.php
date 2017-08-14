@@ -25,7 +25,7 @@ class UrlGenerator implements UrlGeneratorInterface
     protected $payloadProcessor;
 
     /** @var string */
-    protected $host = 'https://click.socialsale.io';
+    protected $host = 'https://socialsale.io/_click';
 
     /**
      * ClickUrlGenerator constructor.
