@@ -16,6 +16,6 @@ namespace SocialSaleIO\Exception;
  *
  * @author Daniel Gorgan <danut007ro@gmail.com>
  */
-class InvalidFormatException extends \InvalidArgumentException
+class InvalidFormatException extends PayloadException
 {
 }
