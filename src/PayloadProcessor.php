@@ -53,16 +53,16 @@ class PayloadProcessor implements PayloadProcessorInterface
     {
         $payloadParts = explode('.', $encodedPayload, 2);
         if (2 !== count($payloadParts)) {
-            throw new InvalidFormatException('Invalid format of payload');
+            throw new InvalidFormatException('Invalid payload format');
         }
 
         if (base64_decode($payloadParts[0]) !== hash_hmac('sha256', $payloadParts[1], $this->key, true)) {
-            throw new InvalidSignatureException('Payload has invalid signature');
+            throw new InvalidSignatureException('Invalid payload signature');
         }
 
         $payload = json_decode(base64_decode($payloadParts[1]), true);
         if (!is_array($payload)) {
-            throw new InvalidContentException('Decoded payload is invalid');
+            throw new InvalidContentException('Invalid payload content');
         }
 
         return $payload;
