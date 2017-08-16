@@ -51,7 +51,7 @@ class UrlGeneratorTest extends TestCase
         $urlGenerator = new UrlGenerator('appId', $payloadProcessor);
         $urlGenerator->setHost('http://localhost/');
         $this->assertEquals(
-            'http://localhost/appId/encodedPayload',
+            'http://localhost/appId.encodedPayload',
             $urlGenerator->generateClickUrl('socialPlatform', 'id', [])
         );
     }

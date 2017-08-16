@@ -49,7 +49,7 @@ class UrlGenerator implements UrlGeneratorInterface
 
         $encodedPayload = $this->payloadProcessor->encode($options);
 
-        return rtrim($this->host, '/')."/{$this->appId}/$encodedPayload";
+        return rtrim($this->host, '/')."/{$this->appId}.$encodedPayload";
     }
 
     /**
