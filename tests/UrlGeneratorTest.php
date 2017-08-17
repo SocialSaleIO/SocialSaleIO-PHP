@@ -12,6 +12,7 @@
 namespace SocialSaleIO\Tests;
 
 use PHPUnit\Framework\TestCase;
+use SocialSaleIO\Click;
 use SocialSaleIO\PayloadProcessor;
 use SocialSaleIO\UrlGenerator;
 
@@ -40,19 +41,87 @@ class UrlGeneratorTest extends TestCase
             ->getMock();
 
         $payloadProcessor
-            ->expects($this->once())
+            ->expects($this->at(0))
             ->method('encode')
-            ->with([
-                '_id' => 'id',
-                '_platform' => 'socialPlatform',
-            ])
+            ->with([])
             ->willReturn('encodedPayload');
+
+        $payloadProcessor
+            ->expects($this->at(1))
+            ->method('encode')
+            ->with(['_id' => 'clickId'])
+            ->willReturn('encodedPayload');
+
+        $payloadProcessor
+            ->expects($this->at(2))
+            ->method('encode')
+            ->with(['_platform' => 'platform'])
+            ->willReturn('encodedPayload');
+
+        $payloadProcessor
+            ->expects($this->at(3))
+            ->method('encode')
+            ->with(['_sharedUrl' => 'sharedUrl'])
+            ->willReturn('encodedPayload');
+
+        $payloadProcessor
+            ->expects($this->at(4))
+            ->method('encode')
+            ->with(['_redirectUrl' => 'redirectUrl'])
+            ->willReturn('encodedPayload');
+
+        $payloadProcessor
+            ->expects($this->at(5))
+            ->method('encode')
+            ->with(['k1' => 'v1', 'k2' => 'v2'])
+            ->willReturn('encodedPayload');
+
+        $payloadProcessor
+            ->expects($this->exactly(6))
+            ->method('encode');
 
         $urlGenerator = new UrlGenerator('appId', $payloadProcessor);
         $urlGenerator->setHost('http://localhost/');
+
+        $click = new Click();
         $this->assertEquals(
             'http://localhost/appId.encodedPayload',
-            $urlGenerator->generateClickUrl('socialPlatform', 'id', [])
+            $urlGenerator->generateClickUrl($click)
+        );
+
+        $click = new Click();
+        $click->setClickId('clickId');
+        $this->assertEquals(
+            'http://localhost/appId.encodedPayload',
+            $urlGenerator->generateClickUrl($click)
+        );
+
+        $click = new Click();
+        $click->setSocialPlatform('platform');
+        $this->assertEquals(
+            'http://localhost/appId.encodedPayload',
+            $urlGenerator->generateClickUrl($click)
+        );
+
+        $click = new Click();
+        $click->setSharedUrl('sharedUrl');
+        $this->assertEquals(
+            'http://localhost/appId.encodedPayload',
+            $urlGenerator->generateClickUrl($click)
+        );
+
+        $click = new Click();
+        $click->setRedirectUrl('redirectUrl');
+        $this->assertEquals(
+            'http://localhost/appId.encodedPayload',
+            $urlGenerator->generateClickUrl($click)
+        );
+
+        $click = new Click();
+        $click->setProperties(['k1' => 'v1', 'k2' => 'v2']);
+        $this->assertEquals(
+            'http://localhost/appId.encodedPayload',
+            $urlGenerator->generateClickUrl($click)
         );
     }
 }

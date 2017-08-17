@@ -21,11 +21,9 @@ interface UrlGeneratorInterface
     /**
      * Generate url for click.
      *
-     * @param string $socialPlatform
-     * @param string $id
-     * @param array $options
+     * @param ClickInterface $click
      *
      * @return string
      */
-    public function generateClickUrl($socialPlatform, $id, array $options = []);
+    public function generateClickUrl(ClickInterface $click);
 }

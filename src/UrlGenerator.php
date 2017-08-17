@@ -42,10 +42,13 @@ class UrlGenerator implements UrlGeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generateClickUrl($socialPlatform, $id, array $options = [])
+    public function generateClickUrl(ClickInterface $click)
     {
-        $options['_platform'] = (string) $socialPlatform;
-        $options['_id'] = (string) $id;
+        $options = $click->getProperties();
+        $this->addValue($options, '_id', $click->getClickId());
+        $this->addValue($options, '_platform', $click->getSocialPlatform());
+        $this->addValue($options, '_sharedUrl', $click->getSharedUrl());
+        $this->addValue($options, '_redirectUrl', $click->getRedirectUrl());
 
         $encodedPayload = $this->payloadProcessor->encode($options);
 
@@ -70,5 +73,21 @@ class UrlGenerator implements UrlGeneratorInterface
         $this->host = $host;
 
         return $this;
+    }
+
+    /**
+     * Add a named value to options array.
+     *
+     * @param array $options
+     * @param string $name
+     * @param string $value
+     */
+    protected function addValue(array &$options, $name, $value)
+    {
+        if (strval($value)) {
+            $options[$name] = $value;
+        } else {
+            unset($options[$name]);
+        }
     }
 }
