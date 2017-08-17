@@ -76,7 +76,7 @@ class UrlGenerator implements UrlGeneratorInterface
     }
 
     /**
-     * Add a named value to options array
+     * Add a named value to options array.
      *
      * @param array $options
      * @param string $name
