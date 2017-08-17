@@ -19,35 +19,35 @@ namespace SocialSaleIO;
 interface ClickInterface
 {
     /**
-     * Get click id
+     * Get click id.
      *
      * @return string
      */
     public function getClickId();
 
     /**
-     * Get social platform name
+     * Get social platform name.
      *
      * @return string
      */
     public function getSocialPlatform();
 
     /**
-     * Get url to be shared
+     * Get url to be shared.
      *
      * @return string
      */
     public function getSharedUrl();
 
     /**
-     * Get url to which user is redirected
+     * Get url to which user is redirected.
      *
      * @return string
      */
     public function getRedirectUrl();
 
     /**
-     * Get extra properties for click
+     * Get extra properties for click.
      *
      * @return array
      */
